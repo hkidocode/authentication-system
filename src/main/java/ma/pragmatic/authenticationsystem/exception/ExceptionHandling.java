@@ -75,7 +75,6 @@ public class ExceptionHandling {
         return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
     }
 
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleDataIntegrityViolationException(MethodArgumentNotValidException exception, HttpServletRequest request) {
