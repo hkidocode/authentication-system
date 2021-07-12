@@ -1,4 +1,4 @@
-package ma.pragmatic.authenticationsystem.controller;
+package ma.pragmatic.authenticationsystem.model;
 
 import lombok.Data;
 

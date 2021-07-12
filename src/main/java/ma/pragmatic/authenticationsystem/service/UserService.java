@@ -1,16 +1,18 @@
 package ma.pragmatic.authenticationsystem.service;
 
+import ma.pragmatic.authenticationsystem.model.PasswordRequest;
 import ma.pragmatic.authenticationsystem.model.User;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.io.FileNotFoundException;
 
 @Service
 public interface UserService {
-    User getById(Long userId);
-    List<User> getAll();
-    User addOrUpdate(User user);
-    void deleteById(Long userId);
+    void save(User user) throws FileNotFoundException;
     User getByEmail(String email);
     User getByEmailAndPassword(String email, String password);
+    String confirmRegisterToken(String token);
+    String confirmPasswordToken(String token);
+    void sendResetPasswordMail(String email);
+    void updatePassword(PasswordRequest passwordRequest);
 }

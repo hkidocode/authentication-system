@@ -36,15 +36,10 @@ public class ExceptionHandling {
     @ExceptionHandler(InvalidDataAccessApiUsageException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleInvalidDataAccessApiUsageException(HttpServletRequest request) {
-        return new ApiError(HttpStatus.BAD_REQUEST.value(), "You have mistyped one of entity instance properties names", request.getServletPath());
+        return new ApiError(HttpStatus.BAD_REQUEST.value(), "You have mistyped one of entity properties names", request.getServletPath());
     }
 
 
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ApiError handleIllegalArgumentException(HttpServletRequest request) {
-        return new ApiError(HttpStatus.NOT_FOUND.value(), "One of query params contents does not match any database values", request.getServletPath());
-    }
     @ExceptionHandler(MissingServletRequestParameterException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ApiError handleMissingServletRequestParameterException(MissingServletRequestParameterException exception, HttpServletRequest request) {
@@ -69,9 +64,39 @@ public class ExceptionHandling {
         return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
     }
 
+    @ExceptionHandler(EmailNotExistException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleEmailNotExistException(EmailNotExistException exception, HttpServletRequest request) {
+        return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
+    }
+
     @ExceptionHandler(PasswordNotMatchException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ApiError handlePasswordNotMatchException(PasswordNotMatchException exception, HttpServletRequest request) {
+        return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
+    }
+
+    @ExceptionHandler(TokenConfirmedException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleTokenConfirmedException(TokenConfirmedException exception, HttpServletRequest request) {
+        return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
+    }
+
+    @ExceptionHandler(TokenNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleTokenNotFoundException(TokenNotFoundException exception, HttpServletRequest request) {
+        return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
+    }
+
+    @ExceptionHandler(UserNotVerifiedException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleUserNotVerifiedException(UserNotVerifiedException exception, HttpServletRequest request) {
+        return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
+    }
+
+    @ExceptionHandler(TokenExpiredException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ApiError handleTokenExpiredException(TokenExpiredException exception, HttpServletRequest request) {
         return new ApiError(HttpStatus.NOT_FOUND.value(), exception.getMessage(), request.getServletPath());
     }
 

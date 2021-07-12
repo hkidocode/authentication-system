@@ -1,6 +1,5 @@
 package ma.pragmatic.authenticationsystem.config.jwt;
 
-import lombok.extern.java.Log;
 import ma.pragmatic.authenticationsystem.config.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -18,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @Component
-@Log
 public class JwtFilter extends GenericFilterBean {
 
     @Autowired
